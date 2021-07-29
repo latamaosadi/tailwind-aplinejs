@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test Tailwindcss</title>
+	<link rel="stylesheet" href="app.css">
+	<script src="http://unpkg.com/alpinejs" defer></script>
+</head>
+<body class="bg-gray-400">
+  <div class="container mx-auto p-8 bg-white min-h-screen">
+
+    <div x-data="{showModal: false}">
+      <div class="fixed inset-0 bg-opacity-50 bg-black hidden" :class="{'hidden': !showModal, 'flex': showModal}" x-show="showModal" x-transition.opacity>
+        <div class="bg-white rounded-lg p-8 m-auto w-4/6 h-96 shadow-xl" @click.outside="showModal = false" x-show="showModal" x-transition.scale.origin.top>
+          <h1 class="text-4xl font-bold text-gray-800">Modal Title</h1>
+          <p class="leading-relaxed mt-4 text-gray-600">Modal Body Content</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn" @click="showModal = true">Open Modal</button>
+      </div>
+    </div>
+
+    <div x-data="{toggle: false}" class="mt-10 text-center">
+      <button class="px-4 py-2 rounded bg-green-400 transition duration-300" :class="{'bg-red-400': toggle, 'bg-green-400': !toggle}" @click="toggle = !toggle">Change My Color</button>
+    </div>
+
+  </div>
+</body>
+</html>
