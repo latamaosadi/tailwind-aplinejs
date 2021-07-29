@@ -1,32 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Test Tailwindcss</title>
-	<link rel="stylesheet" href="app.css">
-	<script src="http://unpkg.com/alpinejs" defer></script>
-</head>
-<body class="bg-gray-400">
-  <div class="container mx-auto p-8 bg-white min-h-screen">
-
-    <div x-data="{showModal: false}">
-      <div class="fixed inset-0 bg-opacity-50 bg-black hidden" :class="{'hidden': !showModal, 'flex': showModal}" x-show="showModal" x-transition.opacity>
-        <div class="bg-white rounded-lg p-8 m-auto w-4/6 h-96 shadow-xl" @click.outside="showModal = false" x-show="showModal" x-transition.scale.origin.top>
-          <h1 class="text-4xl font-bold text-gray-800">Modal Title</h1>
-          <p class="leading-relaxed mt-4 text-gray-600">Modal Body Content</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Tailwindcss</title>
+    <link rel="stylesheet" href="app.css" />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="bg-gray-400">
+    <div class="container mx-auto p-8 bg-white min-h-screen">
+      <div x-data="{showModal: false}">
+        <div
+          class="fixed inset-0 bg-opacity-50 bg-black hidden"
+          :class="{'hidden': !showModal, 'flex': showModal}"
+          x-show="showModal"
+          x-transition.opacity
+        >
+          <div
+            class="bg-white rounded-lg p-8 m-auto w-4/6 h-96 shadow-xl"
+            @click.outside="showModal = false"
+            x-show="showModal"
+            x-transition.scale.origin.top
+          >
+            <h1 class="text-4xl font-bold text-gray-800">Modal Title</h1>
+            <p class="leading-relaxed mt-4 text-gray-600">Modal Body Content</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="btn" @click="showModal = true">Open Modal</button>
         </div>
       </div>
-      <div class="text-center">
-        <button class="btn" @click="showModal = true">Open Modal</button>
+
+      <div x-data="{name: 'red', age: 18, gender: 'ze'}">
+        <input
+          type="text"
+          class="py-3 px-kenehrage border border-gray-700 rounded-xl"
+          x-model="name"
+        />
+      </div>
+
+      <div x-data="{height: 0}">
+        <div
+          class="
+            bg-gray-600
+            fixed
+            top-0
+            left-0
+            z-10
+            w-16
+            transition-all
+            duration-700
+          "
+          :style="{height: height + 'px'}"
+        ></div>
+        <button
+          class="py-2 px-4 rounded bg-blue-500 border border-blue-700"
+          @click.stopPropagation="height = window.innerHeight / 2"
+        >
+          resize
+        </button>
+      </div>
+
+      <div x-data="{toggle: false}" class="mt-10 text-center">
+        <button
+          class="
+            px-4
+            py-2
+            rounded
+            bg-green-400
+            transform
+            transition
+            duration-300
+          "
+          :class="{'bg-burgundy translate-x-6': toggle, 'bg-green-400': !toggle}"
+          @click="toggle = !toggle"
+        >
+          Change My Color
+        </button>
       </div>
     </div>
-
-    <div x-data="{toggle: false}" class="mt-10 text-center">
-      <button class="px-4 py-2 rounded bg-green-400 transition duration-300" :class="{'bg-red-400': toggle, 'bg-green-400': !toggle}" @click="toggle = !toggle">Change My Color</button>
-    </div>
-
-  </div>
-</body>
+  </body>
 </html>
